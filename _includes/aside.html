@@ -1,0 +1,123 @@
+<!-- ==== BEGIN aside ==== -->
+<aside>
+
+
+    <div class="sep light"></div>
+
+    <!-- ==== Profile ==== -->
+    <section class="profile">
+        <p><a href="{{ '/about/' | prepend: site.baseurl }}">ABOUT ME</a></p>
+
+	<!-- ==== Avatar ==== -->
+	<figure class="avatar">
+	    {% if site.blog-avatar %}
+	        <img src="{{ site.blog-avatar | prepend: site.baseurl }}" alt="avatar">
+            {% endif %}
+	    {% if site.blog-description %}
+	        <figcaption>
+		    {{ site.blog-description }}
+		</figcaption>
+	    {% endif %}
+	</figure>
+
+	<!-- ==== SNS ==== --> 
+	<p class="c social">
+		<a href="https://plus.google.com/u/0/104643883202022740598"><span class="icon-google-plus2"></span></a><a href="https://www.facebook.com/fengfeng.song.5"><span class="icon-facebook2"></span></a><a href="https://github.com/mageluer"><span class="icon-github"></span></a><a href="http://stackoverflow.com/users/6761532/mageluer"><span class="icon-stackoverflow"></span></a><a href="https://dribbble.com/Mageluer"><span class="icon-dribbble"></span></a>
+	</p>
+    </section>
+
+
+
+
+    
+    <!-- ==== Tag cloud ==== -->
+    <section class="tag-cloud">
+        <p><a href="{{ '/blog/tags/' | prepend: site.baseurl }}">TAG CLOUD</a></p>
+        
+	<div>
+	    {% assign first = site.tags %}
+	    {% assign max = first[1].size %}
+	    {% assign min = max %}
+	    {% for tag in site.tags offset:1 %}
+	        {% if tag[1].size > max %}
+		    {% assign max = tag[1].size %}
+		{% elsif tag[1].size < min %}
+		    {% assign min = tag[1].size %}
+		{% endif %}
+	    {% endfor %}
+	    {% assign diff = max | minus: min %}
+	    
+	    {% for tag in site.tags %}
+	        {% assign temp = tag[1].size | minus: min | times: 36 | divided_by: diff %}
+		{% assign base = temp | divided_by: 4 %}
+		{% assign remain = temp | modulo : 4 %}
+                {% if remian == 0 %}
+		    {% assign size = base | plus: 9 %}
+		{% elsif remain == 1 or remian == 2 %}
+		    {% assign size = base | plus: 9 | append: '.5' %}
+		{% else %}
+		    {% assign size = base | plus: 10 %}
+		{% endif %}
+		{% if remain == 0 or remian == 1 %}
+		    {% assign color = 9 | minus: base %}
+		{% else %}
+		    {% assign color = 8 | minus base %}
+		{% endif %}
+		<a class="tag" href="{{ '/blog/tags/' | prepend: site.baseurl }}#{{ tag[0] }}" style="font-size: {{ size }}px; color: #{{ color }}{{ color }}{{ color }};">{{ tag[0] }}</a>
+	    {% endfor %}
+	</div>
+    </section>
+
+
+
+    <!-- ==== Categories ==== -->
+    <section class="categories">
+        <p><a href="{{ '/blog/categories/' | prepend: site.baseurl }}">CATEGORIES</a></p>
+
+	<div>
+	    <ul>
+	        {% for cat in site.categories %}
+	        <li><a href="{{ '/blog/categories/' | prepend: site.baseurl }}#{{ cat[0] }}">{{ cat[0] }}({{ cat | last | size }})</a></li>
+		{% endfor %}
+            </ul>
+	</div>
+    </section>
+
+
+
+
+    <!-- ==== Archive ==== -->
+    <section class="archive">
+        <p><a href="{{ '/blog/archives/' | prepend: site.baseurl }}">ARCHIVE</a></p>
+
+	<div>
+	    <ul>
+	        {% for post in site.posts limit: 7 %}
+	        <li>{{ post.date | date: "%Y%m%d" }}  <a href="{{ post.url }}">{{ post.title }}</a></li>
+		{% endfor %}
+	        <li><a href="{{ "/blog/archives/" | prepend: site.baseurl }}">View the full archive...</a></li>
+            </ul>
+	</div>
+    </section>
+
+
+
+    <!-- ==== Blogroll ==== -->
+    <section class="blogroll">
+        <p><a href="">FRIENDS</a></p>
+	<ul>
+	    {% for friend_hash in site.data.friends %}
+	    {% assign friend = friend_hash[1] %}
+            <li class="friend">
+	        <a href="{{ friend.site }}" title="{{ friend.title }}">
+                    <img class="friend-avatar" src="{{ friend.avatar }}" alt="avatar" title="{{ friend.title }}"><span class="friend-name">{{ friend.name }}</span>
+		</a>
+            </li>
+	    {% endfor %}
+	</ul>
+    </section>
+
+
+
+</aside>
+<!-- END aside -->

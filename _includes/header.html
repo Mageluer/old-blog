@@ -1,0 +1,72 @@
+<!-- ==== BEGIN header ==== -->
+<header class="masthead" role="banner">
+
+    <div class="open sep"></div>
+
+	<!-- ==== Logo ==== -->
+	<div id="logo">
+	    <p>Mageluer Swimming Pool</p>
+	</div>
+
+	<!-- ==== Menu ==== -->
+	<nav role="navigation" id="menu-list-desktop">
+	    <ol id="menu">
+		<li class="menu-item"><a href="{{ "/" | prepend: site.baseurl }}">Home</a></li>
+		<li class="menu-item"><a href="{{ "/blog" | prepend: site.baseurl }}">Blog</a></li>
+		<li class="menu-item"><a href="{{ "/music" | prepend: site.baseurl }}">Music</a></li>
+		<li class="menu-item"><a href="{{ "/about" | prepend: site.baseurl }}">About Me</a></li>
+		<li class="menu-item"><a href="{{ "/contact" | prepend: site.baseurl }}">Contact Me</a></li>
+	</nav>
+
+	<!-- ==== Menu-list-mobile ==== -->
+	<nav role="navigation" id="menu-list-mobile">
+            <a href="{{ "/" | prepend: site.baseurl }}" class="home-menu"><span class="icon-home3"></span></a>
+            <ul class="navigator-menu">
+                <li>
+                    <a>
+                        <div class="hamburger hamburger--emphatic">
+                            <div class="hamburger-box">
+                                <div class="hamburger-inner"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="dropdown-navbar">
+	                <ul class="dropdown-nav">
+                            <li><a href="{{ "/blog" | prepend: site.baseurl }}">Blog</a></li>
+                            <li><a href="{{ "/music" | prepend: site.baseurl }}">Music</a></li>
+                            <li><a href="{{ "/about" | prepend: site.baseurl }}">About Me</a></li>
+                            <li><a href="{{ "/contact" | prepend: site.baseurl }}">Contact Me</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+    
+        </nav>
+
+	<div class="light sep"></div>
+																					
+	<!-- ==== Script for mobile menu ==== -->
+        <script>
+        var forEach=function(t,o,r){if("[object Object]"===Object.prototype.toString.call(t))for(var c in t)Object.prototype.hasOwnProperty.call(t,c)&&o.call(r,t[c],c,t);else for(var e=0,l=t.length;l>e;e++)o.call(r,t[e],e,t)};
+
+        var hamburgers = document.querySelectorAll(".hamburger");
+        if (hamburgers.length > 0) {
+            forEach(hamburgers, function(hamburger) {
+                hamburger.addEventListener("click", function() {
+                    var dropdown = document.querySelector(".dropdown-navbar");
+                    var display = dropdown.style.getPropertyValue("display");
+		    dropdown.style.width = (new Number(document.documentElement.clientWidth)).toString + 'px';
+		    dropdown.style.height = (new Number(document.documentElement.clientHeight)).toString + 'px';
+                    this.classList.toggle("is-active");
+                    display = display == "block" ? "none" : "block";
+		    dropdown.style.width = (new Number(document.documentElement.clientWidth - 42)).toString() + 'px';
+		    dropdown.style.height = (new Number(document.documentElement.clientHeight)).toString() + 'px';
+                    dropdown.style.display = display;
+                }, false);
+            });
+        }
+        </script>
+
+
+</header>
+<!-- END header -->
