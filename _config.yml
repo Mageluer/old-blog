@@ -7,7 +7,7 @@ keyword: "Mageluer, 马格鲁尔, Mageluer's Blog, swim, fly, run, computer scie
 blog-description: かいぞくおうになる仆が决まる
 blog-avatar: "/assets/images/avatar.jpg"
 url: "https://mageluer.github.io"
-baseurl: ""
+baseurl: "/old-blog"
 
 
 
@@ -27,3 +27,5 @@ paginate_path: "/blog/page:num"
 
 # Gems
 gems: [jekyll-paginate]
+
+plugins: [jekyll-paginate]
